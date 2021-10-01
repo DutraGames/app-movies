@@ -3,6 +3,8 @@ import Header from "../../components/Header"
 import {Container, AreaSeach, SeachButton, SeachCampo, Title, Banner, BannerButton} from './style'
 
 import {Feather} from '@expo/vector-icons'
+import { FlatList } from "react-native"
+import List from "../../components/List"
 
 export default function Home(){
     return(
@@ -21,6 +23,7 @@ export default function Home(){
            </BannerButton>
 
            <Title>Lançamentos</Title>
+           <FlatList data={[1,2,3,4,5]} renderItem={() => <List/>} horizontal showsHorizontalScrollIndicator={false}/>
        </Container>
     )
 }

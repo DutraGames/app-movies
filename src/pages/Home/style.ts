@@ -51,4 +51,9 @@ width: 100%;
 border-radius: 10px;
 `
 
+export const lista = styled.FlatList`
+width: 100px;
+height: 300px;
+`
+
 import {} from 'react-native'
