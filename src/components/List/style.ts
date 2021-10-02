@@ -12,7 +12,8 @@ height: 200px;
 `
 export const Title = Styled.Text`
 color: #fff;
-font-size: 22px;
+padding-top: 10px;
+font-size: 16px;
 font-weight: bold;
 `
 
@@ -22,6 +23,6 @@ align-items: center;
 `
 export const Rate = Styled.Text`
 color: #fff;
-font-size: 15px;
+font-size: 14px;
 font-weight: bold;
 `

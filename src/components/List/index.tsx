@@ -2,14 +2,14 @@ import React from "react"
 import {Container, Title, Banner, Rate, RateArea} from './style'
 import { Ionicons } from '@expo/vector-icons';
 
-export default function List(){
+export default function List({data}:any){
     return(
         <Container>
-            <Banner resizeMethod="resize" source={{uri: 'https://f.i.uol.com.br/fotografia/2019/04/23/15560338625cbf314652022_1556033862_3x2_md.jpg'}}/>
-            <Title>SS</Title>
+            <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${data.poster_path}`}}/>
+            <Title numberOfLines={1}>{data.title}</Title>
             <RateArea>
-                <Ionicons name="md-star" size={20} color="#eaa33e" />
-                <Rate>8/10</Rate>
+                <Ionicons name="md-star" size={15} color="#eaa33e" />
+                <Rate>{data.vote_average}/10</Rate>
             </RateArea>      
         </Container>
     )
