@@ -7,13 +7,14 @@ import api, {key} from "../../api"
 import {Feather} from '@expo/vector-icons'
 import List from "../../components/List"
 
-import {getListMovies} from '../../util/movie'
+import {getListMovies,bannerRandom} from '../../util/movie'
 
 export default function Home(){
 
     const [nowMovies, setNowMovies] = useState<object>([])
     const [popularMovies, setPopularMovies] = useState<object>([])
     const [topMovies, setTopMovies] = useState<object>([])
+    const [banner, setBanner] = useState<object>({})
     const [loading, setLoading] = useState<boolean>(true)
     useEffect(() => {
 
@@ -50,6 +51,8 @@ export default function Home(){
                 const nowList = getListMovies(10, nowData.data.results)
                 const popularList = getListMovies(5, popularData.data.results)
                 const topList = getListMovies(5, topData.data.results)
+
+                setBanner(nowData.data.results[bannerRandom(nowData.data.results)])
 
                 setNowMovies(nowList)
                 setPopularMovies(popularList)
@@ -89,7 +92,7 @@ export default function Home(){
 
            <Title>Em Cartaz</Title>
            <BannerButton>
-               <Banner resizeMethod="resize" source={{uri: 'https://f.i.uol.com.br/fotografia/2019/04/23/15560338625cbf314652022_1556033862_3x2_md.jpg'}}/>
+               <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${banner.poster_path}`}}/>
            </BannerButton>
            <SliderMovies 
            horizontal={true}
