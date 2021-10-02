@@ -55,5 +55,3 @@ export const SliderMovies = styled.FlatList`
 width: 100%;
 height: 300px;
 `
-
-import {} from 'react-native'

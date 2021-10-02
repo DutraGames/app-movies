@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import Header from "../../components/Header"
 import {Container, AreaSeach, SeachButton, SeachCampo, Title, Banner, BannerButton, SliderMovies} from './style'
-
+import {ActivityIndicator} from 'react-native'
 import api, {key} from "../../api"
 
 import {Feather} from '@expo/vector-icons'
@@ -11,13 +11,16 @@ import {getListMovies} from '../../util/movie'
 
 export default function Home(){
 
-    const [nowMovies, setNowMovies]:any = useState([])
-    const [popularMovies, setPopularMovies]:any = useState([])
-    const [topMovies, setTopMovies]:any = useState([])
-
+    const [nowMovies, setNowMovies] = useState<object>([])
+    const [popularMovies, setPopularMovies] = useState<object>([])
+    const [topMovies, setTopMovies] = useState<object>([])
+    const [loading, setLoading] = useState<boolean>(true)
     useEffect(() => {
+
+        let isActive:boolean = true
+        const ac = new AbortController()
+
         async function getMovies(){
-            let isActive = true
 
             const [nowData, popularData, topData] = await Promise.all([
                 api.get('/movie/now_playing', {
@@ -43,18 +46,36 @@ export default function Home(){
                 })
             ])
 
-            const nowList = getListMovies(5, nowData.data.results)
-            const popularList = getListMovies(5, popularData.data.results)
-            const topList = getListMovies(5, topData.data.results)
+            if(isActive){
+                const nowList = getListMovies(10, nowData.data.results)
+                const popularList = getListMovies(5, popularData.data.results)
+                const topList = getListMovies(5, topData.data.results)
 
-            setNowMovies(nowList)
-            setPopularMovies(popularList)
-            setTopMovies(topList)
+                setNowMovies(nowList)
+                setPopularMovies(popularList)
+                setTopMovies(topList)
+                setLoading(false)
+            }
+
+
         }
 
         getMovies()
 
+        return () =>{
+            isActive = false
+            ac.abort()
+        }
     }, [])
+
+
+    if(loading){
+        return(
+            <Container>
+                <ActivityIndicator size={'large'} color={'#fff'}/>
+            </Container>
+        )
+    }
     return(
        <Container>
            <Header title="Início"/>
