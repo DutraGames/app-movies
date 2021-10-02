@@ -1,4 +1,4 @@
-import styled from 'styled-components/native'
+import styled  from 'styled-components/native'
 
 export const Container = styled.ScrollView`
 background-color: #090011;
@@ -51,8 +51,8 @@ width: 100%;
 border-radius: 10px;
 `
 
-export const lista = styled.FlatList`
-width: 100px;
+export const SliderMovies = styled.FlatList`
+width: 100%;
 height: 300px;
 `
 
