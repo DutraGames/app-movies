@@ -9,3 +9,7 @@ export function getListMovies (size:number, movies:any){
 
     return  popularMovies;
 }
+
+export function bannerRandom(movies:any){
+    return Math.floor(Math.random() * movies.length)
+}
