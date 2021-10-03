@@ -4,6 +4,8 @@ import {Container, AreaSeach, SeachButton, SeachCampo, Title, Banner, BannerButt
 import {ActivityIndicator} from 'react-native'
 import api, {key} from "../../api"
 
+import {useNavigation} from '@react-navigation/native'
+
 import {Feather} from '@expo/vector-icons'
 import List from "../../components/List"
 
@@ -16,6 +18,9 @@ export default function Home(){
     const [topMovies, setTopMovies] = useState<object>([])
     const [banner, setBanner] = useState<object>({})
     const [loading, setLoading] = useState<boolean>(true)
+
+    const Navigator:any = useNavigation()
+
     useEffect(() => {
 
         let isActive:boolean = true
@@ -71,6 +76,10 @@ export default function Home(){
         }
     }, [])
 
+    const NavigatorDetail = (item:any) =>{
+        Navigator.navigate("Detalhes", {id: item.id})
+    }
+
 
     if(loading){
         return(
@@ -91,13 +100,13 @@ export default function Home(){
            </AreaSeach>
 
            <Title>Em Cartaz</Title>
-           <BannerButton>
+           <BannerButton onPress={() => NavigatorDetail(banner)}>
                <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${banner.poster_path}`}}/>
            </BannerButton>
            <SliderMovies 
            horizontal={true}
            data={nowMovies}
-           renderItem={({item}: any) => <List data={item}/> } 
+           renderItem={({item}: any) => <List data={item} NavigatorPage={() => NavigatorDetail(item)}/>} 
            showsHorizontalScrollIndicator={false} 
            keyExtractor={(item:any) => String(item.id)}
            />
@@ -106,7 +115,7 @@ export default function Home(){
            <SliderMovies 
            horizontal={true}
            data={popularMovies}
-           renderItem={({item}: any) => <List data={item}/> } 
+           renderItem={({item}: any) => <List data={item} NavigatorPage={() => NavigatorDetail(item)}/> } 
            showsHorizontalScrollIndicator={false} 
            keyExtractor={(item:any) => String(item.id)}
            />
@@ -115,7 +124,7 @@ export default function Home(){
            <SliderMovies 
            horizontal={true}
            data={topMovies}
-           renderItem={({item}: any) => <List data={item}/> } 
+           renderItem={({item}: any) => <List data={item} NavigatorPage={() => NavigatorDetail(item)}/> } 
            showsHorizontalScrollIndicator={false} 
            keyExtractor={(item:any) => String(item.id)}
            />
