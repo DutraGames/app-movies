@@ -39,6 +39,16 @@ export default function Details(){
             isActive = false
         }
     }, [])
+
+    const BtnLinkView = () =>{
+        if (movie.homepage !== '') {
+            return(
+                <ButtonLink onPress={() => setOpen(true)}>
+                    <Feather name="link" size={35} color="#fff"/>
+                </ButtonLink>
+            )
+        }
+    }
     
     return(
         <Container>
@@ -53,9 +63,7 @@ export default function Details(){
             </Header>
             <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}`}}/>
 
-            <ButtonLink onPress={() => setOpen(true)}>
-                <Feather name="link" size={35} color="#fff"/>
-            </ButtonLink>
+            {BtnLinkView()}            
 
             <Title numberOfLines={2}>{movie.title}</Title>
 
