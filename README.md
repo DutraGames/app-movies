@@ -11,6 +11,6 @@ Porém não irei fazer igualzinho como ele irá, mas sim um molde do app.
 O App está em produção, mas logo estará totalmente pronto, com coisas a mais que pretendo criar.
 
 - [x] HomePage
-- [ ] Detail Page
+- [x] Detail Page
 - [ ] About Page
 - [ ] Favorite Page
