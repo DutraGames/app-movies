@@ -6,7 +6,8 @@ import Stars from 'react-native-stars'
 import {useNavigation, useRoute} from '@react-navigation/native'
 import api, {key} from "../../api"
 import Genre from '../../components/Genre'
-import { ScrollView } from "react-native-gesture-handler"
+import { ScrollView, Modal } from "react-native"
+import ModalLink from "../../components/ModalLink"
 
 export default function Details(){
 
@@ -14,6 +15,7 @@ export default function Details(){
     const Route = useRoute()
 
     const [movie, setMovie] = useState<object>({})
+    const [open, setOpen] = useState<boolean>(false)
 
     useEffect(() => {
         let isActive:boolean = true
@@ -51,8 +53,8 @@ export default function Details(){
             </Header>
             <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}`}}/>
 
-            <ButtonLink>
-                <Feather name="link" size={35} color="#fff" />
+            <ButtonLink onPress={() => setOpen(true)}>
+                <Feather name="link" size={35} color="#fff"/>
             </ButtonLink>
 
             <Title numberOfLines={2}>{movie.title}</Title>
@@ -81,6 +83,11 @@ export default function Details(){
             <ScrollView>
                 <Des>{movie.overview}</Des>
             </ScrollView>
+
+            <Modal animationType="slide" transparent={true} visible={open}>
+                <ModalLink link={movie.homepage} title={movie.title} close={() => setOpen(false)}/>
+            </Modal>
+
         </Container>
     )
 }
