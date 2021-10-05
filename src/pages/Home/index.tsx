@@ -18,6 +18,7 @@ export default function Home(){
     const [topMovies, setTopMovies] = useState<object>([])
     const [banner, setBanner] = useState<object>({})
     const [loading, setLoading] = useState<boolean>(true)
+    const [searcher, setSearcher] = useState<string>('')
 
     const Navigator:any = useNavigation()
 
@@ -80,6 +81,13 @@ export default function Home(){
         Navigator.navigate("Detalhes", {id: item.id})
     }
 
+    const NavigateBusca = () =>{
+        if (searcher !== '') {
+            Navigator.navigate("Busca", {title: searcher})
+            setSearcher('')
+        }
+    }
+
 
     if(loading){
         return(
@@ -93,8 +101,8 @@ export default function Home(){
            <Header title="Início"/>
 
            <AreaSeach>
-                <SeachCampo  placeholder="Vingadores" placeholderTextColor="#888"/>
-                <SeachButton>
+                <SeachCampo  placeholder="Vingadores" placeholderTextColor="#888" value={searcher} onChangeText={(text) => setSearcher(text)}/>
+                <SeachButton onPress={NavigateBusca}>
                     <Feather name="search" size={35} color="#fff" />
                 </SeachButton>
            </AreaSeach>
