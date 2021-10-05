@@ -50,13 +50,16 @@ export default function Search(){
         </Container>
     }
 
-    
+    const NavigateDetails = (item) =>{
+        Navigation.navigate("Detalhes", {id: item.id})
+    }
+
     return(
         <Container>
             <ListFilmes data={movie}
             showVerticalScrollIndicator={false}
             keyExtractor={(item:any) => String( item.id)}
-            renderItem={({item}) => <SeacherItem data={item}/>}
+            renderItem={({item}) => <SeacherItem data={item} navigate={() => NavigateDetails(item)}/>}
             />
         </Container>
     )
