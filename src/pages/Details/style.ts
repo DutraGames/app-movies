@@ -82,3 +82,14 @@ padding-bottom: 10px;
 line-height: 25px;
 font-size: 18px;
 `
+
+export const ButtonShare = Styled.TouchableOpacity`
+background-color: #0f0;
+width: 60px;
+height: 60px;
+align-items: center;
+justify-content: center;
+border-radius: 30px;
+position: relative;
+left:200px;
+`
