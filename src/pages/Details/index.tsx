@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react"
-import { Container, Title,Header, ButtonHeader, Banner, ButtonLink, RateArea, Rate, ListGenre, Des} from "./style"
+import { Container, Title,Header, ButtonHeader, Banner, ButtonLink, RateArea, Rate, ListGenre, Des, ButtonShare} from "./style"
 import {Feather, Ionicons} from '@expo/vector-icons'
 import Stars from 'react-native-stars'
 
 import {useNavigation, useRoute} from '@react-navigation/native'
 import api, {key} from "../../api"
 import Genre from '../../components/Genre'
-import { ScrollView, Modal } from "react-native"
+import { ScrollView, Modal, Share } from "react-native"
 import ModalLink from "../../components/ModalLink"
 import {MoviesHas,MoviesSave, MoviesDelete} from '../../util/storage'
 
@@ -65,6 +65,12 @@ export default function Details(){
             setFavorite(true)
         }
     }
+
+    const onShare = async (msg:string) =>{
+        const result = await Share.share({
+            message: msg,
+          })
+    }
     
     return(
         <Container>
@@ -110,6 +116,9 @@ export default function Details(){
             <Title>Descrição</Title>
             <ScrollView>
                 <Des>{movie.overview}</Des>
+                <ButtonShare onPress={() => onShare(movie.overview)}>
+                    <Ionicons name="share-social" size={35} color="#fff"/>
+                </ButtonShare>
             </ScrollView>
 
             <Modal animationType="slide" transparent={true} visible={open}>
