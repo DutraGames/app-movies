@@ -66,9 +66,9 @@ export default function Details(){
         }
     }
 
-    const onShare = async (msg:string) =>{
+    const onShare = async (msg:string, name:string) =>{
         const result = await Share.share({
-            message: msg,
+            message: `*${name}* \n\n ${msg}`,
           })
     }
     
@@ -116,7 +116,7 @@ export default function Details(){
             <Title>Descrição</Title>
             <ScrollView>
                 <Des>{movie.overview}</Des>
-                <ButtonShare onPress={() => onShare(movie.overview)}>
+                <ButtonShare onPress={() => onShare(movie.overview, movie.title)}>
                     <Ionicons name="share-social" size={35} color="#fff"/>
                 </ButtonShare>
             </ScrollView>

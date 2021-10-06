@@ -70,7 +70,7 @@ font-weight: bold;
 `
 
 export const ListGenre = Styled.FlatList`
-max-height: 35px;
+max-height: 45px;
 padding-left: 15px;
 margin: 8px 0;
 `
