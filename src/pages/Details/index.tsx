@@ -8,6 +8,7 @@ import api, {key} from "../../api"
 import Genre from '../../components/Genre'
 import { ScrollView, Modal } from "react-native"
 import ModalLink from "../../components/ModalLink"
+import {MoviesHas,MoviesSave, MoviesDelete} from '../../util/storage'
 
 export default function Details(){
 
@@ -16,7 +17,8 @@ export default function Details(){
 
     const [movie, setMovie] = useState<object>({})
     const [open, setOpen] = useState<boolean>(false)
-
+    const [favorite, setFavorite] = useState<boolean>(false)
+    
     useEffect(() => {
         let isActive:boolean = true
 
@@ -30,6 +32,9 @@ export default function Details(){
 
             if(isActive){
                 setMovie(response.data)
+                
+                const isFavorite = await MoviesHas(response.data)
+                setFavorite(isFavorite)
             }
         }
 
@@ -49,6 +54,17 @@ export default function Details(){
             )
         }
     }
+
+    const Favorite = async() =>{
+
+        if (favorite) {
+            await MoviesDelete(movie.id)
+            setFavorite(false)
+        }else{
+            await MoviesSave("@favorites", movie)
+            setFavorite(true)
+        }
+    }
     
     return(
         <Container>
@@ -57,8 +73,12 @@ export default function Details(){
                 <Feather name="arrow-left" size={28} color="#fff" />
                 </ButtonHeader>
 
-                <ButtonHeader>
-                <Feather name="bookmark" size={28} color="#fff" />
+                <ButtonHeader onPress={() => Favorite(movie)}>
+                {favorite? (
+                    <Ionicons name="bookmark" size={28} color="#fff" />
+                ): (
+                    <Ionicons name="bookmark-outline" size={28} color="#fff" />
+                )}
                 </ButtonHeader>
             </Header>
             <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}`}}/>
