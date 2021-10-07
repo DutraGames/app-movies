@@ -78,7 +78,7 @@ margin: 8px 0;
 export const Des = Styled.Text`
 color: #fff;
 padding: 0 15px;
-padding-bottom: 10px;
+padding-bottom: 30px;
 line-height: 25px;
 font-size: 18px;
 `
