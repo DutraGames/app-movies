@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export async function GetMoviesSave(key:string) {
-    const movies = await AsyncStorage.getItem(key)
+    const movies:any = await AsyncStorage.getItem(key)
 
     let movieSaves = JSON.parse(movies) || []
 
