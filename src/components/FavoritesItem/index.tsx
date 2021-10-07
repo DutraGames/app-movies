@@ -1,8 +1,8 @@
 import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import {Container,Banner,BannerContainer,Detail, Text,ButtonDetail, ButtonDelete,Rate, CampoRate} from './style'
+import {Container,Banner,BannerContainer,Detail, Text,ButtonDetail, ButtonDelete,Rate, CampoRate,Buttons} from './style'
 
-export default function FavoriteItem({data}:any){
+export default function FavoriteItem({data, remove, navigate}:any){
     return(
         <Container>
             <Detail>
@@ -18,16 +18,16 @@ export default function FavoriteItem({data}:any){
                 </CampoRate>
             </Detail>
 
-            <Detail>
-                <ButtonDetail>
-                    <MaterialCommunityIcons name="post-outline" size={30} color="#fff" />
+            <Buttons>
+                <ButtonDetail onPress={() => navigate(data)}>
+                    <MaterialCommunityIcons name="post-outline" size={40} color="#fff" />
                     
                 </ButtonDetail>
-                <ButtonDelete>
-                    <MaterialCommunityIcons name="delete" size={30} color="#fff" />
+                <ButtonDelete onPress={() =>remove(data.id)}>
+                    <MaterialCommunityIcons name="delete" size={40} color="#fff" />
                 </ButtonDelete>
 
-            </Detail>
+            </Buttons>
         </Container>
     )
 }

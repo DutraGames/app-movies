@@ -20,6 +20,14 @@ flex-direction: row;
 padding: 10px 0;
 `
 
+export const Buttons = Styled.View`
+width: 100%;
+flex-direction: row;
+padding: 10px 0;
+align-items: center;
+justify-content: center;
+`
+
 export const Text = Styled.Text`
 color: #fff;
 font-size: 20px;
@@ -35,8 +43,9 @@ padding-left: 6px;
 `
 
 export const ButtonDetail = Styled.TouchableOpacity`
-width: 80px;
-height: 40px;
+width: 60px;
+height: 60px;
+border-radius: 30px;
 align-items: center;
 justify-content: center;
 background-color: #0f0;
@@ -44,8 +53,9 @@ margin: 0 10px;
 `
 
 export const ButtonDelete = Styled.TouchableOpacity`
-width: 80px;
-height: 40px;
+width: 60px;
+border-radius: 30px;
+height: 60px;
 align-items: center;
 justify-content: center;
 background-color: #f00;
