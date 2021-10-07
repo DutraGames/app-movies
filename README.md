@@ -2,6 +2,7 @@
 
 ## Descrição:
 
+
 Um simples aplicativo criado com expo, referente a inside do canal [Sujeito Programador](https://www.youtube.com/channel/UCLc5Bq2yfs-S3Zse3ZFRMEQ).
 
 Porém não irei fazer igualzinho como ele irá, mas sim um molde do app.
@@ -14,3 +15,6 @@ O App está em produção, mas logo estará totalmente pronto, com coisas a mais
 - [x] Detail Page
 - [ ] About Page
 - [ ] Favorite Page
+
+[x] Storage
+[x] Share
