@@ -90,6 +90,7 @@ height: 60px;
 align-items: center;
 justify-content: center;
 border-radius: 30px;
-position: relative;
-left:200px;
+position: absolute;
+bottom: 30px;
+right: 20px;
 `

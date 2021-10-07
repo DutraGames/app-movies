@@ -55,6 +55,16 @@ export default function Details(){
         }
     }
 
+    const BtnViewShare = () =>{
+        if (movie.overview !== '') {
+            return(
+                <ButtonShare onPress={() => onShare(movie.overview, movie.title)}>
+                    <Ionicons name="share-social" size={35} color="#fff"/>
+                </ButtonShare>
+            )
+        }
+    }
+
     const Favorite = async() =>{
 
         if (favorite) {
@@ -87,7 +97,7 @@ export default function Details(){
                 )}
                 </ButtonHeader>
             </Header>
-            <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}`}}/>
+            <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}}/>
 
             {BtnLinkView()}            
 
@@ -116,10 +126,9 @@ export default function Details(){
             <Title>Descrição</Title>
             <ScrollView>
                 <Des>{movie.overview}</Des>
-                <ButtonShare onPress={() => onShare(movie.overview, movie.title)}>
-                    <Ionicons name="share-social" size={35} color="#fff"/>
-                </ButtonShare>
             </ScrollView>
+
+            {BtnViewShare()}
 
             <Modal animationType="slide" transparent={true} visible={open}>
                 <ModalLink link={movie.homepage} title={movie.title} close={() => setOpen(false)}/>
