@@ -4,10 +4,12 @@ import Header from "../../components/Header"
 import { AntDesign } from '@expo/vector-icons';
 import {WebView} from 'react-native-webview'
 import {Modal} from 'react-native'
+import ModalLink from "../../components/ModalLink";
 
 export default function About(){
 
     const [dados, setDados] = useState<object>({})
+    const [open, setOpen] = useState<Boolean>(false)
 
     useEffect(() => {
         let isActive = true
@@ -36,9 +38,13 @@ export default function About(){
         <Container>
             <Header title="Sobre"/>
             
-            <ButtonGit>
+            <ButtonGit onPress={() => setOpen(true)}>
                 <AntDesign name="github" size={50} color="#fff"/>
             </ButtonGit>
+
+            <Modal animationType="slide" transparent={true} visible={open}>
+            <ModalLink link={dados.github} title={dados.name} close={() => setOpen(false)}/>
+            </Modal>
         </Container>
     )
 }
