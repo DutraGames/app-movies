@@ -16,6 +16,7 @@ flex-direction: row;
 padding: 30px 15px;
 width: 100%;
 align-items: center;
+justify-content: center;
 `
 
 export const Detail = Styled.View`
