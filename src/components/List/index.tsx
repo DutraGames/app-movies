@@ -2,7 +2,12 @@ import React from "react"
 import {Container, Title, Banner, Rate, RateArea} from './style'
 import { Ionicons } from '@expo/vector-icons';
 
-export default function List({data, NavigatorPage}:any){
+type props = {
+    data: object,
+    NavigatorPage: any
+}
+
+export default function List({data, NavigatorPage}:props){
     return(
         <Container onPress={() => NavigatorPage(data)}>
             <Banner resizeMethod="resize" source={{uri: `https://image.tmdb.org/t/p/original/${data.poster_path}`}}/>

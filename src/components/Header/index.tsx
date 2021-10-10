@@ -4,7 +4,11 @@ import {Container, Title, ButtonMenu} from './style'
 
 import {useNavigation} from '@react-navigation/native'
 
-export default function Header({title}){
+type props = {
+    title: string
+}
+
+export default function Header({title}:props ){
 
     const navigation = useNavigation()
 

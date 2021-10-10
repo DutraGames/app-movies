@@ -3,7 +3,13 @@ import React from 'react'
 import {Feather} from '@expo/vector-icons'
 import {WebView} from 'react-native-webview'
 
-export default function ModalLink({link, close, title}:any){
+type props = {
+    link: any,
+    title: string,
+    close: any
+}
+
+export default function ModalLink({link, close, title}:props){
 
     return(
         <>

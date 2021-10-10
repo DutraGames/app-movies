@@ -2,7 +2,14 @@ import React from 'react'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import {Container,Banner,BannerContainer,Detail, Text,ButtonDetail, ButtonDelete,Rate, CampoRate,Buttons} from './style'
 
-export default function FavoriteItem({data, remove, navigate}:any){
+type props ={
+    data: object,
+    remove: any,
+    navigate: any
+
+}
+
+export default function FavoriteItem({data, remove, navigate}:props){
     return(
         <Container>
             <Detail>

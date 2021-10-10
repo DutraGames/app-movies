@@ -1,7 +1,11 @@
 import React from "react"
 import {Container, Title} from './style'
 
-export default function Genre({data}:any){
+type props = {
+    data: object
+}
+
+export default function Genre({data}:props){
     return(
         <Container>
             <Title>{data.name}</Title>  

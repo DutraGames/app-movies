@@ -1,6 +1,6 @@
 
 
-export function getListMovies (size:number, movies:any){
+export function getListMovies (size:number, movies:object){
     let popularMovies = [];
 
     for(let i  =  0,  l  =  size;  i  <  l;  i++){
@@ -10,6 +10,6 @@ export function getListMovies (size:number, movies:any){
     return  popularMovies;
 }
 
-export function bannerRandom(movies:any){
+export function bannerRandom(movies:object){
     return Math.floor(Math.random() * movies.length)
 }

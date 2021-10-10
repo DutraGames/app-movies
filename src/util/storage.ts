@@ -8,7 +8,7 @@ export async function GetMoviesSave(key:string) {
     return movieSaves
 }
 
-export async function MoviesSave(key:string, movie) {
+export async function MoviesSave(key:string, movie:object) {
     let movieStored = await GetMoviesSave(key)
 
     const hasmovie = movieStored.some(item => item.id === movie.id)
@@ -35,7 +35,7 @@ export async function MoviesDelete(id) {
     return myMovies
 }
 
-export async function MoviesHas(movie) {
+export async function MoviesHas(movie:object) {
     let movieStored = await GetMoviesSave('@favorites')
 
     const hasMovie = movieStored.find(item => item.id === movie.id)

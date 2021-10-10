@@ -2,7 +2,12 @@ import React from "react"
 import { Ionicons } from '@expo/vector-icons';
 import {Container,Title,Banner, RateContainer,Rate} from './style'
 
-export default function SeacherItem({data, navigate}:any){
+type props = {
+    data: object,
+    navigate: any
+}
+
+export default function SeacherItem({data, navigate}:props){
 
     return(
         <Container onPress={() =>{
