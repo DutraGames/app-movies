@@ -42,3 +42,18 @@ Hope this little code can help people learn how to use expo and TypeScript. :D
 
 ### **Share function**
 
+## **❓How to use?**
+
+Open [api.ts]("./src/api.ts") and change the key value to yours.
+
+```ts
+import axios from "axios"
+
+const api = axios.create({
+    baseURL: 'https://api.themoviedb.org/3'
+})
+
+export const key = 'you key'
+
+export default api
+```
