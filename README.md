@@ -44,7 +44,7 @@ Hope this little code can help people learn how to use expo and TypeScript. :D
 
 ## **❓How to use?**
 
-Open [api.ts]("./src/api.ts") and change the key value to yours.
+Open [api.ts]("https://github.com/DutraGames/app-movies/blob/main/src/api.ts") and change the key value to yours.
 
 ```ts
 import axios from "axios"
