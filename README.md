@@ -1,20 +1,9 @@
 # App Movies
 
-## Descrição:
+## 📰**Description**:
 
+A simple app created with expo, referring to the interior 4 of channel [Sujeito Programador](https://www.youtube.com/channel/UCLc5Bq2yfs-S3Zse3ZFRMEQ).
+Where I developed in a way that suits my taste and need.
 
-Um simples aplicativo criado com expo, referente a inside do canal [Sujeito Programador](https://www.youtube.com/channel/UCLc5Bq2yfs-S3Zse3ZFRMEQ).
+Hope this little code can help people learn how to use expo and TypeScript. :D
 
-Porém não irei fazer igualzinho como ele irá, mas sim um molde do app.
-
-## ⚠️⚠️⚠️**Atenção**⚠️⚠️⚠️:
-
-O App está em produção, mas logo estará totalmente pronto, com coisas a mais que pretendo criar.
-
-- [x] HomePage
-- [x] Detail Page
-- [ ] About Page
-- [ ] Favorite Page
-
-[x] Storage
-[x] Share
